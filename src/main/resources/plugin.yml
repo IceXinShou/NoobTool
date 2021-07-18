@@ -1,0 +1,10 @@
+name: NoobTool
+version: 1.0
+main: xs.Main
+api-version: 1.17
+prefix: NoobTool
+authors: [ IceXinShou ]
+description: Just A Plugin For Tool With Noob
+website: www.cloudtown.tw
+commands:
+  play:
