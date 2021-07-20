@@ -8,10 +8,13 @@ import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.craftbukkit.v1_17_R1.inventory.CraftItemStack;
-import org.bukkit.entity.*;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Mob;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -21,7 +24,10 @@ import org.bukkit.potion.PotionEffectType;
 import xs.Main;
 import xs.util.Mobs;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 
 public class FreezeSword implements Listener {
@@ -105,4 +111,13 @@ public class FreezeSword implements Listener {
             Bukkit.getServer().getScheduler().scheduleSyncDelayedTask(Main.getPlugin(Main.class), () -> list.remove(player.getName()), coldDownTime);
         }
     }
+
+    int i = 0;
+
+    @EventHandler
+    public void PickUp(EntityPickupItemEvent event) {
+        if (event.getItem().getItemStack().getType().equals(Material.COBBLESTONE))
+            i = i + 1;
+    }
+
 }
